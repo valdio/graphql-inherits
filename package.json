@@ -1,6 +1,6 @@
 {
   "name": "graphql-inherits",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Graphql inheritance directive for types and input objects.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

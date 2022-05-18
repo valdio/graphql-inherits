@@ -7,7 +7,10 @@ import {
 
 // This function takes in a schema and adds inherits directives to all types
 // the specified name (we're using `inherits`)
-function inheritDirective(schema: GraphQLSchema, directiveName: string) {
+function inheritDirective(
+  schema: GraphQLSchema,
+  directiveName: string
+): GraphQLSchema {
   return mapSchema(schema, {
     // Executes once for each object field in the schema
     [MapperKind.OBJECT_TYPE]: (fieldConfig) => {
