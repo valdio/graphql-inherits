@@ -1,8 +1,9 @@
 {
   "name": "graphql-inherits",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Graphql inheritance directive for types and input objects.",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "repository": "https://github.com/valdio/graphql-inherits",
   "author": "Valdio Veliu <Valdio Veliu>",
   "license": "MIT",
@@ -13,11 +14,13 @@
     "build": "tsc -p tsconfig.json",
     "prepare": "yarn run build"
   },
-  "dependencies": {
+  "peerDependencies": {
     "@graphql-tools/utils": "^8.6.10",
     "graphql": "^16.5.0"
   },
   "devDependencies": {
+    "@graphql-tools/utils": "^8.6.10",
+    "graphql": "^16.5.0",
     "typescript": "^4.6.4"
   }
 }

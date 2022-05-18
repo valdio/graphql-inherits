@@ -2,6 +2,16 @@
 
 Graphql inheritance directive for types and input objects.
 
+## Installation
+
+```bash
+$ yarn add graphql-inherits
+
+# this package has the following peer dependencies:
+# - graphql
+# - @graphql-tools/utils
+```
+
 ## Usage
 
 Integrate the `inherits` directive with your GraphQL schema.
@@ -25,6 +35,9 @@ const server = new ApolloServer({
 Use the `inherits` directive to define a type or input object that inherits from another type or input object.
 
 ```ts
+    // <!-- Declare directive -->
+    directive @inherits(type: String!) on OBJECT | INPUT_OBJECT
+
     // <!-- GraphQLObjectType example -->
     type Pet {
         id: ID
