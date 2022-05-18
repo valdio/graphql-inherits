@@ -2,6 +2,8 @@
 
 Graphql inheritance directive for types and input objects.
 
+[![npm package](https://img.shields.io/badge/npm-package-3FB950.svg)](https://www.npmjs.com/package/graphql-inherits)
+
 ## Installation
 
 ```bash
