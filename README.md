@@ -57,7 +57,7 @@ Use the `inherits` directive to define a type or input object that inherits from
         age: Int
     }
 
-    input DogInput @inherits(input: "PetInput") {
+    input DogInput @inherits(type: "PetInput") {
         breed: String
     }
 ```
