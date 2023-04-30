@@ -1,4 +1,4 @@
-import { ApolloError, gql } from "apollo-server-express";
+import { gql } from "apollo-server-express";
 import { makeExecutableSchema } from "@graphql-tools/schema";
 import { mergeTypeDefs } from "@graphql-tools/merge";
 
