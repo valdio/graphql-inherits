@@ -80,6 +80,10 @@ Use the `inherits` directive to define a type or input object that inherits from
 
 ```
 
+#### Note!
+
+> Circular inheritances are not supported and will cause an `RangeError: Maximum call stack size exceeded`.
+
 ### [License](./LICENSE)
 
 ```
