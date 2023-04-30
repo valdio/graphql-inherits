@@ -13,11 +13,30 @@ export type Scalars = {
   Float: number;
 };
 
+export type Dog = {
+  __typename?: 'Dog';
+  age?: Maybe<Scalars['Int']>;
+  breed?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['ID']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+export type DogInput = {
+  age?: InputMaybe<Scalars['Int']>;
+  breed?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
 export type Pet = {
   __typename?: 'Pet';
   age?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['ID']>;
   name?: Maybe<Scalars['String']>;
+};
+
+export type PetInput = {
+  age?: InputMaybe<Scalars['Int']>;
+  name?: InputMaybe<Scalars['String']>;
 };
 
 export type Query = {
@@ -102,9 +121,12 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
+  Dog: ResolverTypeWrapper<Dog>;
+  DogInput: DogInput;
   ID: ResolverTypeWrapper<Scalars['ID']>;
   Int: ResolverTypeWrapper<Scalars['Int']>;
   Pet: ResolverTypeWrapper<Pet>;
+  PetInput: PetInput;
   Query: ResolverTypeWrapper<{}>;
   Status: ResolverTypeWrapper<Status>;
   String: ResolverTypeWrapper<Scalars['String']>;
@@ -113,12 +135,29 @@ export type ResolversTypes = {
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
   Boolean: Scalars['Boolean'];
+  Dog: Dog;
+  DogInput: DogInput;
   ID: Scalars['ID'];
   Int: Scalars['Int'];
   Pet: Pet;
+  PetInput: PetInput;
   Query: {};
   Status: Status;
   String: Scalars['String'];
+};
+
+export type InheritsDirectiveArgs = {
+  type: Scalars['String'];
+};
+
+export type InheritsDirectiveResolver<Result, Parent, ContextType = any, Args = InheritsDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
+
+export type DogResolvers<ContextType = any, ParentType extends ResolversParentTypes['Dog'] = ResolversParentTypes['Dog']> = {
+  age?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  breed?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['ID']>, ParentType, ContextType>;
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type PetResolvers<ContextType = any, ParentType extends ResolversParentTypes['Pet'] = ResolversParentTypes['Pet']> = {
@@ -138,8 +177,12 @@ export type StatusResolvers<ContextType = any, ParentType extends ResolversParen
 };
 
 export type Resolvers<ContextType = any> = {
+  Dog?: DogResolvers<ContextType>;
   Pet?: PetResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
   Status?: StatusResolvers<ContextType>;
 };
 
+export type DirectiveResolvers<ContextType = any> = {
+  inherits?: InheritsDirectiveResolver<any, any, ContextType>;
+};

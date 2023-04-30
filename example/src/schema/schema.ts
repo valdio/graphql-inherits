@@ -5,10 +5,24 @@ import { mergeTypeDefs } from "@graphql-tools/merge";
 export default makeExecutableSchema({
   typeDefs: mergeTypeDefs([
     gql`
+      directive @inherits(type: String!) on OBJECT | INPUT_OBJECT
+
       type Pet {
         id: ID
         name: String
         age: Int
+      }
+      type Dog @inherits(type: "Pet") {
+        breed: String
+      }
+
+      input PetInput {
+        name: String
+        age: Int
+      }
+
+      input DogInput @inherits(type: "PetInput") {
+        breed: String
       }
 
       type Status {
@@ -28,18 +42,3 @@ export default makeExecutableSchema({
     },
   },
 });
-
-// type Dog @inherits(type: "Pet") {
-//   breed: String
-// }
-
-// input PetInput {
-//   name: String
-//   age: Int
-// }
-
-// input DogInput @inherits(input: "PetInput") {
-//   breed: String
-// }
-
-// directive @inherits(type: String!) on OBJECT | INPUT_OBJECT

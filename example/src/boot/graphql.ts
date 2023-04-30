@@ -3,7 +3,7 @@ import { ApolloServer } from "apollo-server-express";
 import inheritDirective from "graphql-inherits";
 import schema from "../schema";
 
-let updatedSchema = inheritDirective(schema, "inherits");
+const updatedSchema = inheritDirective(schema, "inherits");
 
 const server = new ApolloServer({
   schema: updatedSchema,
