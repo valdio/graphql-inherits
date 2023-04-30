@@ -39,6 +39,8 @@ Use the `inherits` directive to define a type or input object that inherits from
 ```ts
     // <!-- Declare directive -->
     directive @inherits(type: String!) on OBJECT | INPUT_OBJECT
+   
+   // --------------------------------------------------------
 
     // <!-- GraphQLObjectType example -->
     type Pet {
@@ -50,6 +52,8 @@ Use the `inherits` directive to define a type or input object that inherits from
     type Dog @inherits(type: "Pet") {
         breed: String
     }
+  
+  // --------------------------------------------------------
 
     // <!-- GraphQLInputObjectType example -->
     input PetInput  {
@@ -60,11 +64,13 @@ Use the `inherits` directive to define a type or input object that inherits from
     input DogInput @inherits(type: "PetInput") {
         breed: String
     }
+   
+   // --------------------------------------------------------
 
     // <!-- Cross types are also permitted. -->
     // For example from Object to Input type:]
 
-     type UserBase {
+    type UserBase {
         name: String
         age: Int
     }
