@@ -60,4 +60,16 @@ Use the `inherits` directive to define a type or input object that inherits from
     input DogInput @inherits(type: "PetInput") {
         breed: String
     }
+
+    // <!-- Cross types are also permitted. -->
+    // For example from Object to Input type:]
+
+     type UserBase {
+        name: String
+        age: Int
+    }
+    input UserInput @inherits(type: "UserBase") {
+        email: String!
+    }
+
 ```
