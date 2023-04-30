@@ -27,6 +27,16 @@ export type DogInput = {
   name?: InputMaybe<Scalars['String']>;
 };
 
+export type MyAwesomePoodle = {
+  __typename?: 'MyAwesomePoodle';
+  age?: Maybe<Scalars['Float']>;
+  awesomeName?: Maybe<Scalars['String']>;
+  breed?: Maybe<Scalars['String']>;
+  hairLength?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['ID']>;
+  name?: Maybe<Scalars['String']>;
+};
+
 /**
  * ---------------------------------------------------------------
  * Type definitions.
@@ -51,13 +61,18 @@ export type PetInput = {
 
 export type Poodle = {
   __typename?: 'Poodle';
+  age?: Maybe<Scalars['Float']>;
   breed?: Maybe<Scalars['String']>;
   hairLength?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['ID']>;
+  name?: Maybe<Scalars['String']>;
 };
 
 export type PoodleInput = {
+  age?: InputMaybe<Scalars['Int']>;
   breed?: InputMaybe<Scalars['String']>;
   hairLength?: InputMaybe<Scalars['Int']>;
+  name?: InputMaybe<Scalars['String']>;
 };
 
 export type Query = {
@@ -162,8 +177,10 @@ export type ResolversTypes = {
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
   Dog: ResolverTypeWrapper<Dog>;
   DogInput: DogInput;
+  Float: ResolverTypeWrapper<Scalars['Float']>;
   ID: ResolverTypeWrapper<Scalars['ID']>;
   Int: ResolverTypeWrapper<Scalars['Int']>;
+  MyAwesomePoodle: ResolverTypeWrapper<MyAwesomePoodle>;
   Pet: ResolverTypeWrapper<Pet>;
   PetInput: PetInput;
   Poodle: ResolverTypeWrapper<Poodle>;
@@ -180,8 +197,10 @@ export type ResolversParentTypes = {
   Boolean: Scalars['Boolean'];
   Dog: Dog;
   DogInput: DogInput;
+  Float: Scalars['Float'];
   ID: Scalars['ID'];
   Int: Scalars['Int'];
+  MyAwesomePoodle: MyAwesomePoodle;
   Pet: Pet;
   PetInput: PetInput;
   Poodle: Poodle;
@@ -207,6 +226,16 @@ export type DogResolvers<ContextType = any, ParentType extends ResolversParentTy
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
+export type MyAwesomePoodleResolvers<ContextType = any, ParentType extends ResolversParentTypes['MyAwesomePoodle'] = ResolversParentTypes['MyAwesomePoodle']> = {
+  age?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  awesomeName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  breed?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  hairLength?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['ID']>, ParentType, ContextType>;
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export type PetResolvers<ContextType = any, ParentType extends ResolversParentTypes['Pet'] = ResolversParentTypes['Pet']> = {
   age?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['ID']>, ParentType, ContextType>;
@@ -215,8 +244,11 @@ export type PetResolvers<ContextType = any, ParentType extends ResolversParentTy
 };
 
 export type PoodleResolvers<ContextType = any, ParentType extends ResolversParentTypes['Poodle'] = ResolversParentTypes['Poodle']> = {
+  age?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   breed?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   hairLength?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['ID']>, ParentType, ContextType>;
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -237,6 +269,7 @@ export type UserBaseResolvers<ContextType = any, ParentType extends ResolversPar
 
 export type Resolvers<ContextType = any> = {
   Dog?: DogResolvers<ContextType>;
+  MyAwesomePoodle?: MyAwesomePoodleResolvers<ContextType>;
   Pet?: PetResolvers<ContextType>;
   Poodle?: PoodleResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;

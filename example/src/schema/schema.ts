@@ -17,12 +17,18 @@ export default makeExecutableSchema({
         name: String
         age: Int
       }
+
       type Dog @inherits(type: "Pet") {
         breed: String
       }
 
       type Poodle @inherits(type: "Dog") {
         hairLength: Int
+        age: Float
+      }
+
+      type MyAwesomePoodle @inherits(type: "Poodle") {
+        awesomeName: String
       }
 
       """
