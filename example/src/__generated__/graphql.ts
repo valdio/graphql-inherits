@@ -27,6 +27,21 @@ export type DogInput = {
   name?: InputMaybe<Scalars['String']>;
 };
 
+export type MyAwesomePoodle = {
+  __typename?: 'MyAwesomePoodle';
+  age?: Maybe<Scalars['Float']>;
+  awesomeName?: Maybe<Scalars['String']>;
+  breed?: Maybe<Scalars['String']>;
+  hairLength?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['ID']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/**
+ * ---------------------------------------------------------------
+ * Type definitions.
+ * ---------------------------------------------------------------
+ */
 export type Pet = {
   __typename?: 'Pet';
   age?: Maybe<Scalars['Int']>;
@@ -34,8 +49,29 @@ export type Pet = {
   name?: Maybe<Scalars['String']>;
 };
 
+/**
+ * ---------------------------------------------------------------
+ * Input definitions.
+ * ---------------------------------------------------------------
+ */
 export type PetInput = {
   age?: InputMaybe<Scalars['Int']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+export type Poodle = {
+  __typename?: 'Poodle';
+  age?: Maybe<Scalars['Float']>;
+  breed?: Maybe<Scalars['String']>;
+  hairLength?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['ID']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+export type PoodleInput = {
+  age?: InputMaybe<Scalars['Int']>;
+  breed?: InputMaybe<Scalars['String']>;
+  hairLength?: InputMaybe<Scalars['Int']>;
   name?: InputMaybe<Scalars['String']>;
 };
 
@@ -44,9 +80,27 @@ export type Query = {
   test?: Maybe<Status>;
 };
 
+/** --------------------------------------------------------------- */
 export type Status = {
   __typename?: 'Status';
   status?: Maybe<Scalars['String']>;
+};
+
+/**
+ * ---------------------------------------------------------------
+ * Cross type inherits
+ * ---------------------------------------------------------------
+ */
+export type UserBase = {
+  __typename?: 'UserBase';
+  age?: Maybe<Scalars['Int']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+export type UserInput = {
+  age?: InputMaybe<Scalars['Int']>;
+  email: Scalars['String'];
+  name?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -123,13 +177,19 @@ export type ResolversTypes = {
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
   Dog: ResolverTypeWrapper<Dog>;
   DogInput: DogInput;
+  Float: ResolverTypeWrapper<Scalars['Float']>;
   ID: ResolverTypeWrapper<Scalars['ID']>;
   Int: ResolverTypeWrapper<Scalars['Int']>;
+  MyAwesomePoodle: ResolverTypeWrapper<MyAwesomePoodle>;
   Pet: ResolverTypeWrapper<Pet>;
   PetInput: PetInput;
+  Poodle: ResolverTypeWrapper<Poodle>;
+  PoodleInput: PoodleInput;
   Query: ResolverTypeWrapper<{}>;
   Status: ResolverTypeWrapper<Status>;
   String: ResolverTypeWrapper<Scalars['String']>;
+  UserBase: ResolverTypeWrapper<UserBase>;
+  UserInput: UserInput;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
@@ -137,13 +197,19 @@ export type ResolversParentTypes = {
   Boolean: Scalars['Boolean'];
   Dog: Dog;
   DogInput: DogInput;
+  Float: Scalars['Float'];
   ID: Scalars['ID'];
   Int: Scalars['Int'];
+  MyAwesomePoodle: MyAwesomePoodle;
   Pet: Pet;
   PetInput: PetInput;
+  Poodle: Poodle;
+  PoodleInput: PoodleInput;
   Query: {};
   Status: Status;
   String: Scalars['String'];
+  UserBase: UserBase;
+  UserInput: UserInput;
 };
 
 export type InheritsDirectiveArgs = {
@@ -160,8 +226,27 @@ export type DogResolvers<ContextType = any, ParentType extends ResolversParentTy
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
+export type MyAwesomePoodleResolvers<ContextType = any, ParentType extends ResolversParentTypes['MyAwesomePoodle'] = ResolversParentTypes['MyAwesomePoodle']> = {
+  age?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  awesomeName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  breed?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  hairLength?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['ID']>, ParentType, ContextType>;
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export type PetResolvers<ContextType = any, ParentType extends ResolversParentTypes['Pet'] = ResolversParentTypes['Pet']> = {
   age?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['ID']>, ParentType, ContextType>;
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type PoodleResolvers<ContextType = any, ParentType extends ResolversParentTypes['Poodle'] = ResolversParentTypes['Poodle']> = {
+  age?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  breed?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  hairLength?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['ID']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -176,11 +261,20 @@ export type StatusResolvers<ContextType = any, ParentType extends ResolversParen
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
+export type UserBaseResolvers<ContextType = any, ParentType extends ResolversParentTypes['UserBase'] = ResolversParentTypes['UserBase']> = {
+  age?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export type Resolvers<ContextType = any> = {
   Dog?: DogResolvers<ContextType>;
+  MyAwesomePoodle?: MyAwesomePoodleResolvers<ContextType>;
   Pet?: PetResolvers<ContextType>;
+  Poodle?: PoodleResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
   Status?: StatusResolvers<ContextType>;
+  UserBase?: UserBaseResolvers<ContextType>;
 };
 
 export type DirectiveResolvers<ContextType = any> = {

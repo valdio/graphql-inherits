@@ -1,4 +1,4 @@
-import { mapSchema, getDirective, MapperKind } from "@graphql-tools/utils";
+import { mapSchema, MapperKind } from "@graphql-tools/utils";
 import {
   GraphQLSchema,
   GraphQLObjectType,

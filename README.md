@@ -40,6 +40,8 @@ Use the `inherits` directive to define a type or input object that inherits from
     // <!-- Declare directive -->
     directive @inherits(type: String!) on OBJECT | INPUT_OBJECT
 
+   // --------------------------------------------------------
+
     // <!-- GraphQLObjectType example -->
     type Pet {
         id: ID
@@ -51,6 +53,8 @@ Use the `inherits` directive to define a type or input object that inherits from
         breed: String
     }
 
+  // --------------------------------------------------------
+
     // <!-- GraphQLInputObjectType example -->
     input PetInput  {
         name: String
@@ -60,4 +64,36 @@ Use the `inherits` directive to define a type or input object that inherits from
     input DogInput @inherits(type: "PetInput") {
         breed: String
     }
+
+   // --------------------------------------------------------
+
+    // <!-- Cross types are also permitted. -->
+    // For example from Object to Input type:
+
+    type UserBase {
+        name: String
+        age: Int
+    }
+    input UserInput @inherits(type: "UserBase") {
+        email: String!
+    }
+
+```
+
+#### Note!
+
+> Circular inheritances are not supported and will cause an `RangeError: Maximum call stack size exceeded`.
+
+### [License](./LICENSE)
+
+```
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
 ```

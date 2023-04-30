@@ -7,15 +7,35 @@ export default makeExecutableSchema({
     gql`
       directive @inherits(type: String!) on OBJECT | INPUT_OBJECT
 
+      """
+      ---------------------------------------------------------------
+      Type definitions.
+      ---------------------------------------------------------------
+      """
       type Pet {
         id: ID
         name: String
         age: Int
       }
+
       type Dog @inherits(type: "Pet") {
         breed: String
       }
 
+      type Poodle @inherits(type: "Dog") {
+        hairLength: Int
+        age: Float
+      }
+
+      type MyAwesomePoodle @inherits(type: "Poodle") {
+        awesomeName: String
+      }
+
+      """
+      ---------------------------------------------------------------
+      Input definitions.
+      ---------------------------------------------------------------
+      """
       input PetInput {
         name: String
         age: Int
@@ -25,6 +45,26 @@ export default makeExecutableSchema({
         breed: String
       }
 
+      input PoodleInput @inherits(type: "DogInput") {
+        hairLength: Int
+      }
+
+      """
+      ---------------------------------------------------------------
+      Cross type inherits
+      ---------------------------------------------------------------
+      """
+      type UserBase {
+        name: String
+        age: Int
+      }
+      input UserInput @inherits(type: "UserBase") {
+        email: String!
+      }
+
+      """
+      ---------------------------------------------------------------
+      """
       type Status {
         status: String
       }
